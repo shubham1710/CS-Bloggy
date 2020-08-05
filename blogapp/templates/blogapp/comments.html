@@ -1,0 +1,16 @@
+{% extends "blogapp/base.html" %}
+{% block content %}
+    <h3 class="mb-3">Comments for {{ related_post.title }}</h3>
+    {% for detail in related_post.details.all %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ detail.username.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <h6 class="mr-2">{{ detail.username.username }}</h6>
+              <small class="text-muted">{{ detail.comment_date|date:"F d, Y" }}</small>
+            </div>
+            <p class="article-content">{{ detail.comment }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
